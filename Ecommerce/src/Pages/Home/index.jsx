@@ -1,14 +1,47 @@
+import { useState, useEffect } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 
 function Home() {
 
+  const [items, setItems] = useState(null)
+
+  useEffect(() => {
+    const allProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products")
+        const data = await response.json()
+        console.log(`These are all products ${data}`)
+        setItems (data)
+      } catch (error) {
+        console.log(`Oh Oh there is an error ${error}`)
+      }
+    }
+    allProducts()
+  }, [])
+
   return (
     <Layout>
       Home
-      <Card />
+      <section className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {
+          items?.length > 0 ? (
+            items?.map(product => (
+              <Card 
+                key={product.id}
+                category={product.category}
+                image={product.image}
+                description={product.description}
+                price={`$${product.price}`}
+                title={product.title}
+              />
+            ))
+          ) : (
+            <p>No Products</p>
+          )
+        }
+      </section>
     </Layout>
-
   )
 }
 
