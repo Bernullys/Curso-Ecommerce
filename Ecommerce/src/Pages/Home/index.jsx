@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
+import Skeleton from "../../Components/Skeleton"
 
 function Home() {
 
@@ -23,7 +24,7 @@ function Home() {
   return (
     <Layout>
       Home
-      <section className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <section className="grid gap-24 grid-cols-4 w-full max-w-screen-lg">
         {
           items?.length > 0 ? (
             items?.map(product => (
@@ -37,7 +38,29 @@ function Home() {
               />
             ))
           ) : (
-            <p>No Products</p>
+            <section className="flex">
+              <div>
+                {Array.from({length: 10}).map((_, index) => (
+                  <Skeleton key={index} />
+                ))}
+              </div>
+              <div>
+                {Array.from({length: 10}).map((_, index) => (
+                  <Skeleton key={index} />
+                ))}
+              </div>
+              <div>
+                {Array.from({length: 10}).map((_, index) => (
+                  <Skeleton key={index} />
+                ))}
+              </div>
+              <div>
+                {Array.from({length: 10}).map((_, index) => (
+                  <Skeleton key={index} />
+                ))}
+              </div>
+            </section>
+
           )
         }
       </section>
