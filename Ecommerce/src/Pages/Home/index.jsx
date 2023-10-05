@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import Skeleton from "../../Components/Skeleton"
+import ProductDetail from "../../Components/ProductDetail"
 
 function Home() {
 
@@ -60,10 +61,10 @@ function Home() {
                 ))}
               </div>
             </section>
-
           )
         }
       </section>
+      <ProductDetail />
     </Layout>
   )
 }
