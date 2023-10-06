@@ -7,10 +7,18 @@ export const ShoppingCartContext = createContext() //create a global state
 
 export const ShoppingCartProvider = ({ children }) => {
     const [count, setCount] = useState(0)
+    //to activate the product detail:
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
+    const openProductDetail = () => setIsProductDetailOpen(true)
+    const closeProductDetail = () => setIsProductDetailOpen (false)
+
     return (
         <ShoppingCartContext.Provider value={{ //this does read and set count from children
             count,
-            setCount
+            setCount,
+            openProductDetail,
+            closeProductDetail,
+            isProductDetailOpen,
         }}>
             { children }
         </ShoppingCartContext.Provider>
