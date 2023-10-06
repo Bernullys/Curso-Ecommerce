@@ -13,8 +13,11 @@ const Card = ( {price, title, image, category, description }) => {
                 <img src= { image } alt= { description } className="w-full h-full object-cover rounded-lg" />
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center m-2 p-1"
-                    onClick={() => context.setCount(context.count + 1)}>
-                    <PlusIcon className="h-6 w-6 text-black-500 border-solid"/>
+                    onClick={(s) => {
+                        s.stopPropagation()
+                        context.setCount(context.count + 1)}
+                    }>
+                    <PlusIcon className="h-6 w-6 text-black-500"/>
                 </div>
             </figure>
             <p className="flex justify-between">
