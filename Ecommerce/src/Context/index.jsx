@@ -20,8 +20,12 @@ export const ShoppingCartProvider = ({ children }) => {
     //to add the product to the shopping cart
     const [cartProducts, setCartProducts] = useState([])
 
+    //to activate the checkout side menu - Open/Close
+    const [isChekcoutSideMenuOpen, setIsChekcoutSideMenuOpen] = useState(false)
+    const openChekcoutSideMenu = () => setIsChekcoutSideMenuOpen(true)
+    const closeChekcoutSideMenu = () => setIsChekcoutSideMenuOpen(false)
 
-    return (
+    return ( 
         <ShoppingCartContext.Provider value={{ //this does read and set count from children
             count,
             setCount,
@@ -32,6 +36,10 @@ export const ShoppingCartProvider = ({ children }) => {
             setProductToShow,
             cartProducts,
             setCartProducts,
+            isChekcoutSideMenuOpen,
+            openChekcoutSideMenu,
+            closeChekcoutSideMenu,
+
         }}>
             { children }
         </ShoppingCartContext.Provider>

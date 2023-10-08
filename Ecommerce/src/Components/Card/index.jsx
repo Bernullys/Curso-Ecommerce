@@ -15,6 +15,8 @@ const Card = ({ price, title, image, category, description }) => {
     const addProductsToCart = (productData) => {
         context.setCount(context.count + 1)
         context.setCartProducts([...context.cartProducts, productData])
+        context.closeProductDetail()
+        context.openChekcoutSideMenu()
         console.log(context.cartProducts)
     }
 
@@ -27,8 +29,8 @@ const Card = ({ price, title, image, category, description }) => {
                 <img src= { image } alt= { description } className="w-full h-full object-cover rounded-lg" />
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center m-2 p-1"
-                    onClick={(s) => {
-                        s.stopPropagation()
+                    onClick={(event) => {
+                        event.stopPropagation()
                         addProductsToCart({ price, title, image, category, description })
                         }
                     }>
