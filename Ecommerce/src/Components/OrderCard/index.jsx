@@ -1,8 +1,11 @@
 import { XCircleIcon } from "@heroicons/react/24/outline"
 
+
 const OrderCard = props => {
 
-    const { title, image, price } = props
+    const { id, title, image, price } = props
+    const k = {id}
+    console.log(k) // I don't understand why id is undefined here... thats the reason I can't use it as key in
 
     return (
         <div className="flex justify-between items-center mb-3">
