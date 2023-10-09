@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 import { PlusIcon, CheckCircleIcon } from "@heroicons/react/24/outline"
+import { useState } from "react"
 
 
 const Card = ({ id, price, title, image, category, description }) => {
@@ -21,6 +22,7 @@ const Card = ({ id, price, title, image, category, description }) => {
         console.log(context.cartProducts)
     }
 
+    //this function is to change the icon depending if is already add to My Order side menu
     const renderIcon = (id) => {
         //if there are products in the cart then it shows a check icon and if not it shows plus icon for adding items into the cart
         const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
@@ -45,6 +47,7 @@ const Card = ({ id, price, title, image, category, description }) => {
             )
         }
     }
+
 
     return (
         <div

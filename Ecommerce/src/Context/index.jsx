@@ -25,6 +25,9 @@ export const ShoppingCartProvider = ({ children }) => {
     const openChekcoutSideMenu = () => setIsChekcoutSideMenuOpen(true)
     const closeChekcoutSideMenu = () => setIsChekcoutSideMenuOpen(false)
 
+    //this function is for the shopping car order
+    const [order, setOrder] = useState([])
+
     return ( 
         <ShoppingCartContext.Provider value={{ //this does read and set count from children
             count,
@@ -39,6 +42,8 @@ export const ShoppingCartProvider = ({ children }) => {
             isChekcoutSideMenuOpen,
             openChekcoutSideMenu,
             closeChekcoutSideMenu,
+            order,
+            setOrder,
 
         }}>
             { children }
