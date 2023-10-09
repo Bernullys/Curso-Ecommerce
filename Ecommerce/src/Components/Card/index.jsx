@@ -53,7 +53,7 @@ const Card = ({ id, price, title, image, category, description }) => {
             <figure className="relative mb-2 w-full h-4/5">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-sm m-2 px-3 py-0.5">{ category }</span>
                 <img src= { image } alt= { description } className="w-full h-full object-cover rounded-lg" />
-                {renderIcon(title)}  
+                {renderIcon(id)}  
             </figure>
             <p className="flex justify-between">
                 <span className="text-sm font-light">{ title }</span>
@@ -63,4 +63,5 @@ const Card = ({ id, price, title, image, category, description }) => {
     )
 }
 //in the renderIcon: If I use id as an argument tells me undefined... and console is warning me to use a unique key for each child
+//I had to put it in the props in Home so now works well
 export default Card

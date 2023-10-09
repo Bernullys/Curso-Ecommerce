@@ -31,6 +31,7 @@ function Home() {
             items?.map(product => (
               <Card 
                 key={product.id}
+                id={product.id}
                 category={product.category}
                 image={product.image}
                 description={product.description}

@@ -3,9 +3,9 @@ import { XCircleIcon } from "@heroicons/react/24/outline"
 
 const OrderCard = props => {
 
-    const { id, title, image, price } = props
+    const { id, title, image, price, handleDelete } = props
     const k = {id}
-    console.log(k) // I don't understand why id is undefined here... thats the reason I can't use it as key in
+    console.log(k)
 
     return (
         <div className="flex justify-between items-center mb-3">
@@ -17,7 +17,7 @@ const OrderCard = props => {
             </div>
             <div className="flex items-center gap-2">
                 <p className="text-lg font-medium">{price}</p>
-                <XCircleIcon className="h-6 w-6 text-black-500 cursor-pointer"/>
+                <XCircleIcon onClick={()=> handleDelete(id)} className="h-6 w-6 text-black-500 cursor-pointer"/>
             </div>
         </div>
     )
