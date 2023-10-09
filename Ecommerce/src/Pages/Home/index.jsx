@@ -35,7 +35,7 @@ function Home() {
                 category={product.category}
                 image={product.image}
                 description={product.description}
-                price={`$${product.price}`}
+                price={product.price}
                 title={product.title}
               />
             ))
