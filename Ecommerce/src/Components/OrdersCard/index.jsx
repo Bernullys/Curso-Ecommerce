@@ -1,0 +1,19 @@
+import { XCircleIcon } from "@heroicons/react/24/outline"
+
+
+const OrdersCard = props => {
+
+    const { totalPrice, totalProducts } = props
+
+    return (
+        <div className="flex justify-between items-center mb-3 border border-black">
+            <p>
+                <span>10.10.23</span>
+                <span>{totalProducts}</span>
+                <span>{totalPrice}</span>
+            </p>
+        </div>
+    )
+}
+
+export default OrdersCard
