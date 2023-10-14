@@ -1,34 +1,23 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import Skeleton from "../../Components/Skeleton"
 import ProductDetail from "../../Components/ProductDetail"
+import { ShoppingCartContext } from "../../Context"
+
 
 function Home() {
 
-  const [items, setItems] = useState(null)
+  const context = useContext(ShoppingCartContext)
 
-  useEffect(() => {
-    const allProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products")
-        const data = await response.json()
-        console.log(`These are all products ${data}`, data)
-        setItems (data)
-      } catch (error) {
-        console.log(`Oh Oh there is an error ${error}`)
-      }
-    }
-    allProducts()
-  }, [])
 
   return (
     <Layout>
       Home
       <section className="grid gap-24 grid-cols-4 w-full max-w-screen-lg">
         {
-          items?.length > 0 ? (
-            items?.map(product => (
+          context.items?.length > 0 ? (
+            context.items?.map(product => (
               <Card 
                 key={product.id}
                 id={product.id}

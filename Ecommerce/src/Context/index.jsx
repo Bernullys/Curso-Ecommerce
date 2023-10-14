@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const ShoppingCartContext = createContext() //create a global state
 
@@ -28,6 +28,23 @@ export const ShoppingCartProvider = ({ children }) => {
     //this function is for the shopping car order
     const [order, setOrder] = useState([])
 
+    //refactoring home fetch
+    const [items, setItems] = useState(null)
+
+    useEffect(() => {
+      const allProducts = async () => {
+        try {
+          const response = await fetch("https://fakestoreapi.com/products")
+          const data = await response.json()
+          console.log(`These are all products ${data}`, data)
+          setItems (data)
+        } catch (error) {
+          console.log(`Oh Oh there is an error ${error}`)
+        }
+      }
+      allProducts()
+    }, [])
+
     return ( 
         <ShoppingCartContext.Provider value={{ //this does read and set count from children
             count,
@@ -44,7 +61,8 @@ export const ShoppingCartProvider = ({ children }) => {
             closeChekcoutSideMenu,
             order,
             setOrder,
-
+            items,
+            setItems,
         }}>
             { children }
         </ShoppingCartContext.Provider>
