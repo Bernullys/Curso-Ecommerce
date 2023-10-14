@@ -31,6 +31,10 @@ export const ShoppingCartProvider = ({ children }) => {
     //refactoring home fetch
     const [items, setItems] = useState(null)
 
+    //to put in a state what is typed on the input by title
+    const [searchByTitle, setSearchByTitle] = useState("")
+    console.log(searchByTitle)
+
     useEffect(() => {
       const allProducts = async () => {
         try {
@@ -63,6 +67,8 @@ export const ShoppingCartProvider = ({ children }) => {
             setOrder,
             items,
             setItems,
+            searchByTitle,
+            setSearchByTitle
         }}>
             { children }
         </ShoppingCartContext.Provider>
