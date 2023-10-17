@@ -30,6 +30,9 @@ export const ShoppingCartProvider = ({ children }) => {
 
     //refactoring home fetch
     const [items, setItems] = useState(null)
+    //to use when filtering
+    const [filteredItems, setFilteredItems] = useState(null)
+
 
     //to put in a state what is typed on the input by title
     const [searchByTitle, setSearchByTitle] = useState("")
@@ -48,6 +51,16 @@ export const ShoppingCartProvider = ({ children }) => {
       }
       allProducts()
     }, [])
+
+    const filteredItemsByTitle = (items, searchByTitle) => {
+      return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+
+    useEffect(() => {
+      if(searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
+    }, [items, searchByTitle])
+
+
 
     return ( 
         <ShoppingCartContext.Provider value={{ //this does read and set count from children
@@ -68,7 +81,9 @@ export const ShoppingCartProvider = ({ children }) => {
             items,
             setItems,
             searchByTitle,
-            setSearchByTitle
+            setSearchByTitle,
+            filteredItems,
+            setFilteredItems
         }}>
             { children }
         </ShoppingCartContext.Provider>
