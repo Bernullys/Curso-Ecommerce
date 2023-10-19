@@ -11,55 +11,10 @@ function Home() {
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
-        return (
-          context.filteredItems?.length > 0 ? (
-            context.filteredItems?.map(product => (
-              <Card 
-                key={product.id}
-                id={product.id}
-                category={product.category}
-                image={product.image}
-                description={product.description}
-                price={product.price}
-                title={product.title}
-              />
-            ))
-          ) : (
-            <section className="flex">
-              <div>
-                {Array.from({length: 10}).map((_, index) => (
-                  <Skeleton key={index} />
-                ))}
-              </div>
-              <div>
-                {Array.from({length: 10}).map((_, index) => (
-                  <Skeleton key={index} />
-                ))}
-              </div>
-              <div>
-                {Array.from({length: 10}).map((_, index) => (
-                  <Skeleton key={index} />
-                ))}
-              </div>
-              <div>
-                {Array.from({length: 10}).map((_, index) => (
-                  <Skeleton key={index} />
-                ))}
-              </div>
-            </section>
-          )
-        )
-      } else {
-        return (
-          <div>We don't have that item</div>
-        )
-      }
-    } else {
+    if (context.filteredItems?.length > 0) {
       return (
-        context.items?.length > 0 ? (
-          context.items?.map(product => (
+        context.filteredItems?.length > 0 ? (
+          context.filteredItems?.map(product => (
             <Card 
               key={product.id}
               id={product.id}
@@ -94,6 +49,10 @@ function Home() {
             </div>
           </section>
         )
+      )
+    } else {
+      return (
+        <div>We don't have that item</div>
       )
     }
   }
